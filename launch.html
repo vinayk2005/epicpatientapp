@@ -1,19 +1,41 @@
 <!DOCTYPE html>
 <html>
-
+{%load static%}
 <head>
-	<script src='dist/fhir-client-v2.js'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="{% static 'app/dist/fhir-client-v2.js' %}">
+		console.log()
 	</script>
 </head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.buttonload {
+  background-color: #04AA6D; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 24px; /* Some padding */
+  font-size: 16px; /* Set a font-size */
+}
 
+/* Add a right margin to each icon */
+.fa {
+  margin-left: -12px;
+  margin-right: 8px;
+}
+</style>
 <body>
-	<p>Hello, I am the page "launch.html"</p>
+<!--	<h1 class="container" align="left">Hello, I am the page "launch.html"</h1>-->
+	<br>
+<button class="buttonload">
+  <i class="fa fa-spinner fa-spin"></i>Authorizing
+</button>
+	<h1 class="container">Authorizing Request....</h1>
 
 	<script>
 		FHIR.oauth2.authorize({
-      'client_id': '6b49fdf4-726d-4c17-9e82-fbe882a5e7cb',
+      'client_id': 'Your Client ID',
       'scope':  'PATIENT.READ, PATIENT.SEARCH, OBSERVATION.READ, OBSERVATION.SEARCH',
-      'redirect_uri': 'https://github.com/rajakushwah/epicpatientapp/app.html'
+      'redirect_uri': 'http://127.0.0.1:8000/app'
     });
 	</script>
 
